@@ -6,4 +6,9 @@ node {
    // Checkout code from repository
    checkout scm
    
+   stage 'Checkout 2'
+   
+   // Checkout code from repository
+   checkout scm
+   
 }

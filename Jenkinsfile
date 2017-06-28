@@ -5,12 +5,14 @@ node {
         /* Let's make sure we have the repository cloned to our workspace */
 
         checkout scm
+        
     }
     
     stage('Info image') {
         sh 'whoami'
         sh 'pwd'
         sh 'ls -trl /var/run/*'
+        sh 'ls -trl ./*'
     }
     
     stage('Build containter image') {
@@ -21,8 +23,9 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
-        app = docker.build("sommoyogurt/base")
+        withDockerServer([uri: "tcp://hub.docker.com/r"]) {
+            app = docker.build("sommoyogurt/base")
+        }
     }
 
     stage('Test image') {

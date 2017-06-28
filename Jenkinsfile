@@ -22,7 +22,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("sommoyogurt/hellonode")
+        app = docker.build("sommoyogurt/base")
     }
 
     stage('Test image') {

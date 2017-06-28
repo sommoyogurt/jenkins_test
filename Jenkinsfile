@@ -33,6 +33,10 @@ node {
             sh 'echo "Tests passed"'
         }
     }
+    
+    stage('Images list') {
+        sh 'docker ps -a'
+    }
 
     stage('Push image') {
         /* Finally, we'll push the image with two tags:

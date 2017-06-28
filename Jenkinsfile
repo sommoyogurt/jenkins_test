@@ -7,9 +7,12 @@ node {
         checkout scm
     }
     
-    stage('Build containter image') {
+    stage('Info image') {
         sh 'whoami'
+        sh 'pwd'
+        sh 'ls -trl /var/run/*'
     }
+    
     stage('Build containter image') {
         sh 'pwd'
         sh 'ls -trl /var/run/*'

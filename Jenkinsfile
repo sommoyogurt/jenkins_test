@@ -6,6 +6,14 @@ node {
 
         checkout scm
     }
+    
+    stage('Build containter image') {
+        sh 'whoami'
+    }
+    stage('Build containter image') {
+        sh 'pwd'
+        sh 'ls -trl /var/run/*'
+    }
 
     stage('Build image') {
         /* This builds the actual image; synonymous to

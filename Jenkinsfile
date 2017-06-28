@@ -23,9 +23,10 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        withDockerServer([uri: "tcp://hub.docker.com/r"]) {
-            app = docker.build("sommoyogurt/base")
-        }
+        app = docker.build("sommoyogurt/base").inside({
+            sh 'apt-get install python'
+        })
+        
     }
 
     stage('Test image') {

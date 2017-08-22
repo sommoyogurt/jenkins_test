@@ -1,10 +1,12 @@
 pipeline {
+    def app
+    def scmVars
+
+    
     agent { dockerfile true }
     stages {
 
-    def app
-    def scmVars
-    def DEUS_PATH = '/var/deus'
+
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */

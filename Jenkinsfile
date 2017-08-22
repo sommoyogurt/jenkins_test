@@ -14,13 +14,8 @@ node {
         sh 'ls -trl /var/run/*'
         sh 'ls -trl ./*'
     }
-    
-    stage('Build containter image') {
-        sh 'pwd'
-        sh 'ls -trl /var/run/*'
-    }
 
-    stage('Build image') {
+    stage('Build containter image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         app = docker.build("sommoyogurt/base")

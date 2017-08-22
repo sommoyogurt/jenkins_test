@@ -1,6 +1,7 @@
 node {
     def app
     def scmVars
+    def DEUS_PATH = '/var/deus'
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -33,6 +34,7 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
+            sh DEUS_PATH '/py.test --junitxml results.xml tests.py'
             sh 'echo "Tests passed"'
         }
     }

@@ -5,7 +5,7 @@ node {
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
-        println "BRANCH NAME: ${parmas}" 
+        println "BRANCH NAME: $BRANCH_NAME" 
         /* 
         git url: ""
         checkout([

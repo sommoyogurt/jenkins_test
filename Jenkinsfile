@@ -21,7 +21,6 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         app = docker.build("sommoyogurt/base")
-        println app.env
         app.inside {
             sh 'env > env.txt'
             props = readProperties(file: 'env.txt')

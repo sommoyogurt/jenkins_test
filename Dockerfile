@@ -1,6 +1,8 @@
 # use a node base image
 FROM python:2.7
 
+RUN apt-get install -y gcc
+
 WORKDIR /var/deus/src
 
 COPY requirements.txt ./

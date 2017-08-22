@@ -34,10 +34,11 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
-            sh 'cd ${env.PYTHONPATH}'
-            sh 'pwd'
-            /*sh DEUS_PATH '/py.test --junitxml results.xml tests.py'
-            sh 'echo "Tests passed"'*/
+            echo 'env ${env}'
+            /* sh 'cd ${env.PYTHONPATH}'
+             * sh 'pwd' */
+            /* sh DEUS_PATH '/py.test --junitxml results.xml tests.py'
+             * sh 'echo "Tests passed"' */
         }
     }
     

@@ -34,9 +34,9 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
-            echo "${PYTHONPATH}"
+            echo "$PYTHONPATH"
             sh 'env'
-            sh "cd ${PYTHONPATH}"
+            sh "cd $PYTHONPATH"
             sh 'pwd'
             /* sh DEUS_PATH '/py.test --junitxml results.xml tests.py'
              * sh 'echo "Tests passed"' */

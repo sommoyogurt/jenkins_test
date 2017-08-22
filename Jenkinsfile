@@ -1,7 +1,7 @@
 node {
     def app
     def scmVars
-    def DEUS_PATH = '/var/deus'
+    def props
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -23,6 +23,9 @@ node {
         app = docker.build("sommoyogurt/base")
         println app.env
         app.inside {
+            sh 'env > env.txt'
+            props = readProperties(file: 'env.txt')
+            echo props.PYTHONPATH
             sh 'apt-get install -y git'
             sh 'python --version'
         }

@@ -36,7 +36,7 @@ node {
 
         app.inside {
             echo "PYHONPATH: ${PROPS.PYTHONPATH}"
-            sh 'cd ${PROPS.PYTHONPATH}'
+            sh "cd ${PROPS.PYTHONPATH}"
             sh 'pwd'
             /* sh DEUS_PATH '/py.test --junitxml results.xml tests.py'
              * sh 'echo "Tests passed"' */

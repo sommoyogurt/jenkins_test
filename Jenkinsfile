@@ -21,7 +21,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         app = docker.build("sommoyogurt/base")
-        println app
+        println app.env
         app.inside {
             sh 'apt-get install -y git'
             sh 'python --version'

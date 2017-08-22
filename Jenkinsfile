@@ -5,7 +5,6 @@ node {
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
-
         scmVars = checkout scm
         println scmVars.GIT_COMMIT
         
@@ -22,6 +21,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         app = docker.build("sommoyogurt/base")
+        println app
         app.inside {
             sh 'apt-get install -y git'
             sh 'python --version'

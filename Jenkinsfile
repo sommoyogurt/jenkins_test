@@ -5,12 +5,12 @@ node {
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
-        println "BRANCH NAME: ${env.BRANCH_NAME}" 
-        checkout([
+        println "BRANCH NAME: ${env.GIT_BRANCH}" 
+        /* checkout([
             $class: 'GitSCM',
             branches: scm.branches,
             doGenerateSubmoduleConfigurations: false
-        ])
+        ]) */
         /* scmVars = checkout scm
         println scmVars.GIT_COMMIT */
         

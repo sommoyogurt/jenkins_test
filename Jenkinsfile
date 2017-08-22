@@ -1,10 +1,12 @@
 node {
     def app
+    def scmVars
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
-        checkout scm
+        scmVars = checkout scm
+        println scmVars.GIT_COMMIT
         
     }
     
@@ -20,7 +22,7 @@ node {
          * docker build on the command line */
         app = docker.build("sommoyogurt/base")
         app.inside {
-            sh 'apt-get install -y python'
+            sh 'apt-get install -y git'
             sh 'python --version'
         }
         

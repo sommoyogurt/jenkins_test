@@ -3,6 +3,8 @@ FROM python:2.7
 
 RUN apt-get install -y gcc
 
+RUN mkdir -p /var/deus/src
+
 WORKDIR /var/deus/src
 
 COPY requirements.txt ./

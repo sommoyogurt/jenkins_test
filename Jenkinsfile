@@ -1,7 +1,7 @@
 node {
     def app
     def scmVars
-    def props
+    def PROPS
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -23,8 +23,7 @@ node {
         app = docker.build("sommoyogurt/base")
         app.inside {
             sh 'env > env.txt'
-            props = readProperties(file: 'env.txt')
-            echo props.PYTHONPATH
+            PROPS = readProperties(file: 'env.txt')
             sh 'apt-get install -y git'
             sh 'python --version'
         }
@@ -36,9 +35,8 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
-            echo "$PYTHONPATH"
-            sh 'env'
-            sh "cd $PYTHONPATH"
+            echo PROPS.PYTHONPATH
+            sh "cd " PROPS.PYTHONPATH
             sh 'pwd'
             /* sh DEUS_PATH '/py.test --junitxml results.xml tests.py'
              * sh 'echo "Tests passed"' */

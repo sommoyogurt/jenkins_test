@@ -1,13 +1,7 @@
 # use a node base image
-FROM node:7-onbuild
+FROM python:2.7
 
-# set maintainer
-LABEL maintainer "me@me"
+WORKDIR /var/deus/src
 
-# set a health check
-HEALTHCHECK --interval=5s \
-            --timeout=5s \
-            CMD curl -f http://127.0.0.1:8000 || exit 1
-
-# tell docker what port to expose
-EXPOSE 8000
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt

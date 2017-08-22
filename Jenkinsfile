@@ -5,8 +5,10 @@ node {
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
-        println "BRANCH NAME: ${env.GIT_BRANCH}" 
-        /* checkout([
+        println "BRANCH NAME: ${parmas}" 
+        /* 
+        git url: ""
+        checkout([
             $class: 'GitSCM',
             branches: scm.branches,
             doGenerateSubmoduleConfigurations: false

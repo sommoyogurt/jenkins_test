@@ -1,6 +1,8 @@
+def app
+def scmVars
+
 pipeline {
-    def app
-    def scmVars
+
 
     
     agent { dockerfile true }

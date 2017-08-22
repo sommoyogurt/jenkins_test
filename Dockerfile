@@ -1,9 +1,9 @@
-# use a node base image
+# use a python base image
 FROM python:2.7
 
-RUN apt-get install -y gcc
-
+RUN mkdir -p /var/deus
 RUN mkdir -p /var/deus/src
+RUN mkdir -p /var/deus/scripts
 
 WORKDIR /var/deus/src
 

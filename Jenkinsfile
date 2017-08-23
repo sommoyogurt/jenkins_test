@@ -5,7 +5,7 @@ node {
     
     properties([parameters([string(name: 'branch', defaultValue: 'master')])])
     
-    dockerfile {  args '-v ENVIROMENT:192.168.100.173' }
+    dockerfile {  args '--build-arg ENVIROMENT=192.168.100.173' }
     
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */

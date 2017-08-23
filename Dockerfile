@@ -11,6 +11,8 @@ COPY requirements.txt ./
 #RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install -r requirements.txt
 
+RUN echo $ENVIROMENT
+
 ENV PYTHONPATH /var/deus/src
 
 ENV DEUS_HOME /var/deus

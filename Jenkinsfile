@@ -35,7 +35,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("sommoyogurt/base", " --build-arg ENVIROMENT=192.168.100.173 -f ./Dockefile .")
+        app = docker.build("sommoyogurt/base", "--build-arg ENVIROMENT=192.168.100.173")
         app.inside {
             sh 'env > env.txt'
             PROPS = readProperties(file: 'env.txt')

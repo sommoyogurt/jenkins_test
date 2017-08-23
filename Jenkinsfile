@@ -2,10 +2,12 @@ node {
     def app
     def scmVars
     def PROPS
-    properties([parameters([string(name: 'BRANCH', defaultValue: 'master')])])
+    properties([parameters([string(name: 'branch', defaultValue: 'master')])])
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
-        println "BRANCH NAME: ${params.BRANCH}" 
+        println "BRANCH NAME: ${params.branch}" 
+        echo "${params}"
+        println params
         /* 
         git url: ""
         checkout([

@@ -5,7 +5,7 @@ node {
     
     properties([parameters([string(name: 'branch', defaultValue: 'master')])])
     
-    dockerfile {  args '--build-arg ENVIROMENT=192.168.100.173' }
+    dockerfile {  args: '--build-arg ENVIROMENT=192.168.100.173' }
     
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -35,7 +35,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("sommoyogurt/base", "--build-arg ENVIROMENT=192.168.100.173")
+        app = docker.build("sommoyogurt/base")
         app.inside {
             sh 'env > env.txt'
             PROPS = readProperties(file: 'env.txt')

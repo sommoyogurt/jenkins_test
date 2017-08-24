@@ -26,7 +26,7 @@ node {
             /*dir(PROPS.PYTHONPATH) { */
                 sh 'ls -ltr'
                 sh "cd ${PROPS.PYTHONPATH}"
-                sh 'ls -ltr'
+                sh "ls -ltr ${PROPS.PYTHONPATH}"
                 sh 'pwd'
                 sh 'git rev-parse HEAD > ./VERSION'
                 sh 'git rev-parse --short HEAD >> ./VERSION'

@@ -23,7 +23,7 @@ node {
             PROPS = readProperties(file: 'env.txt')
         }
         app.inside(" -w /var/jenkins_home/workspace/test-pipe-me:${PROPS.PYTHONPATH}") {
-            /*dir(PROPS.PYTHONPATH) { */
+            dir(PROPS.PYTHONPATH) { 
                 sh 'ls -ltr'
                 sh "cd ${PROPS.PYTHONPATH}"
                 sh "ls -ltr ${PROPS.PYTHONPATH}"
@@ -31,7 +31,7 @@ node {
                 sh 'git rev-parse HEAD > ./VERSION'
                 sh 'git rev-parse --short HEAD >> ./VERSION'
                 sh "echo ${params.branch} - ${scmVars.GIT_COMMIT} >> VERSION"
-            /*} */
+            } 
         }
         
     }

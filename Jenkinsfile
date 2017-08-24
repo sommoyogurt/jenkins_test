@@ -5,30 +5,11 @@ node {
     
     properties([parameters([string(name: 'branch', defaultValue: 'master')])])
     
-    dockerfile {  additionalBuildArgs: '--build-arg ENVIROMENT=192.168.100.173' }
-    
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
         println "BRANCH NAME: ${params.branch}" 
         echo "${params}"
         println params
-        /* 
-        git url: ""
-        checkout([
-            $class: 'GitSCM',
-            branches: scm.branches,
-            doGenerateSubmoduleConfigurations: false
-        ]) */
-        /* scmVars = checkout scm
-        println scmVars.GIT_COMMIT */
-        
-    }
-    
-    stage('Info image') {
-        sh 'whoami'
-        sh 'pwd'
-        sh 'ls -trl /var/run/*'
-        sh 'ls -trl ./*'
     }
 
     stage('Build containter image') {
@@ -39,8 +20,12 @@ node {
         app.inside {
             sh 'env > env.txt'
             PROPS = readProperties(file: 'env.txt')
-            sh 'apt-get install -y git'
-            sh 'python --version'
+            sh 'ls -ltr'
+            sh "cd ${PROPS.PYTHONPATH}"
+            sh 'ls -ltr'
+            git rev-parse HEAD > VERSION
+            git rev-parse --short HEAD >> VERSION
+            sh "echo ${params.branch} - ${scmVars.GIT_COMMIT} >> VERSION"
         }
         
     }

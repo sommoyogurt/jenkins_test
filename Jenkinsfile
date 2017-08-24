@@ -23,8 +23,8 @@ node {
             sh 'ls -ltr'
             sh "cd ${PROPS.PYTHONPATH}"
             sh 'ls -ltr'
-            git rev-parse HEAD > VERSION
-            git rev-parse --short HEAD >> VERSION
+            sh 'git rev-parse HEAD > ./VERSION'
+            sh 'git rev-parse --short HEAD >> ./VERSION'
             sh "echo ${params.branch} - ${scmVars.GIT_COMMIT} >> VERSION"
         }
         

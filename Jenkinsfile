@@ -23,7 +23,7 @@ node {
             PROPS = readProperties(file: 'env.txt')
         }
         app.inside("-v ${PROPS.PYTHONPATH}:${PROPS.PYTHONPATH}") {
-            dir(PROPS.PYTHONPATH) {
+            /*dir(PROPS.PYTHONPATH) { */
                 sh 'ls -ltr'
                 sh "cd ${PROPS.PYTHONPATH}"
                 sh 'ls -ltr'
@@ -31,7 +31,7 @@ node {
                 sh 'git rev-parse HEAD > ./VERSION'
                 sh 'git rev-parse --short HEAD >> ./VERSION'
                 sh "echo ${params.branch} - ${scmVars.GIT_COMMIT} >> VERSION"
-            }
+            /*} */
         }
         
     }

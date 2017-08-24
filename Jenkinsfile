@@ -1,6 +1,7 @@
 node {
     def app
     def scmVars
+    def WORKSPACE = pwd()
     def PROPS
     
     properties([parameters([string(name: 'branch', defaultValue: 'master')])])
@@ -22,7 +23,7 @@ node {
             sh 'env > env.txt'
             PROPS = readProperties(file: 'env.txt')
         }
-        app.inside(" -v ${workingDir}:${PROPS.PYTHONPATH}") {
+        app.inside(" -v ${WORKSPACE}:${PROPS.PYTHONPATH}") {
                 sh 'ls -ltr'
                 sh "cd ${PROPS.PYTHONPATH} || pwd"
                 sh "ls -ltr ${PROPS.PYTHONPATH}"

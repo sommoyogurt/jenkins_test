@@ -18,9 +18,11 @@ node {
          * docker build on the command line */
 
         app = docker.build("sommoyogurt/base", "--build-arg ENVIROMENT=192.168.100.173 -f ./Dockerfile .")
-        app.inside("-v ${PROPS.PYTHONPATH}:${PROPS.PYTHONPATH}") {
+        app.inside {
             sh 'env > env.txt'
             PROPS = readProperties(file: 'env.txt')
+        }
+        app.inside("-v ${PROPS.PYTHONPATH}:${PROPS.PYTHONPATH}") {
             dir(PROPS.PYTHONPATH) {
                 sh 'ls -ltr'
                 sh "cd ${PROPS.PYTHONPATH}"

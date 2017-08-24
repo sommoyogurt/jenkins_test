@@ -21,13 +21,15 @@ node {
         app.inside {
             sh 'env > env.txt'
             PROPS = readProperties(file: 'env.txt')
-            sh 'ls -ltr'
-            sh "cd ${PROPS.PYTHONPATH}"
-            sh 'ls -ltr'
-            sh 'pwd'
-            sh 'git rev-parse HEAD > ./VERSION'
-            sh 'git rev-parse --short HEAD >> ./VERSION'
-            sh "echo ${params.branch} - ${scmVars.GIT_COMMIT} >> VERSION"
+            dir(PROPS.PYTHONPATH) {
+                sh 'ls -ltr'
+                sh "cd ${PROPS.PYTHONPATH}"
+                sh 'ls -ltr'
+                sh 'pwd'
+                sh 'git rev-parse HEAD > ./VERSION'
+                sh 'git rev-parse --short HEAD >> ./VERSION'
+                sh "echo ${params.branch} - ${scmVars.GIT_COMMIT} >> VERSION"
+            }
         }
         
     }

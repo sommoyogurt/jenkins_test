@@ -22,7 +22,7 @@ node {
             sh 'env > env.txt'
             PROPS = readProperties(file: 'env.txt')
         }
-        app.inside("-v ${PROPS.PYTHONPATH}:${PROPS.PYTHONPATH}") {
+        app.inside(" -w /var/jenkins_home/workspace/test-pipe-me:${PROPS.PYTHONPATH}") {
             /*dir(PROPS.PYTHONPATH) { */
                 sh 'ls -ltr'
                 sh "cd ${PROPS.PYTHONPATH}"

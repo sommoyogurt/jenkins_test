@@ -23,7 +23,7 @@ node {
             sh 'env > env.txt'
             PROPS = readProperties(file: 'env.txt')
         }
-        app.inside(" -v ${WORKSPACE}:${PROPS.PYTHONPATH}") {
+        app.inside(" -w ${WORKSPACE}:${PROPS.PYTHONPATH}") {
                 sh 'ls -ltr'
                 sh "cd ${PROPS.PYTHONPATH} || pwd"
                 sh "ls -ltr ${PROPS.PYTHONPATH}"
